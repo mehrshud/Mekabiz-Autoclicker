@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mekabiz Autoclicker</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        color: #222;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 min-h-screen font-sans">
+    <div class="container mx-auto px-4 py-8 max-w-md">
+      <h1 class="text-4xl font-bold mb-8">Mekabiz Autoclicker</h1>
+      <div class="mb-4">
+        <label for="clickType" class="block text-sm font-semibold mb-2"
+          >Click Type</label
+        >
+        <select
+          id="clickType"
+          class="w-full px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        >
+          <option value="left-single">Left (Single)</option>
+          <option value="left-double">Left (Double)</option>
+          <option value="left-triple">Left (Triple)</option>
+          <option value="right-single">Right (Single)</option>
+          <option value="right-double">Right (Double)</option>
+          <option value="right-triple">Right (Triple)</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label for="clickRepeat" class="block text-sm font-semibold mb-2"
+          >Click Repeat</label
+        >
+        <input
+          id="clickRepeat"
+          type="number"
+          min="0"
+          value="-1"
+          placeholder="Enter number or -1 for infinite"
+          class="w-full px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        />
+      </div>
+      <div class="mb-4">
+        <label for="targetPoint" class="block text-sm font-semibold mb-2"
+          >Target Point</label
+        >
+        <select
+          id="targetPoint"
+          class="w-full px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        >
+          <option value="fixed">Fixed Location</option>
+          <option value="current">Current Cursor Location</option>
+          <option value="dynamic">Dynamic Cursor Location</option>
+        </select>
+      </div>
+      <div id="fixedLocation" class="mb-4">
+        <div class="flex space-x-4">
+          <div class="w-1/2">
+            <label for="xCoord" class="block text-sm font-semibold mb-2"
+              >X Coordinate</label
+            >
+            <input
+              id="xCoord"
+              type="number"
+              class="w-full px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            />
+          </div>
+          <div class="w-1/2">
+            <label for="yCoord" class="block text-sm font-semibold mb-2"
+              >Y Coordinate</label
+            >
+            <input
+              id="yCoord"
+              type="number"
+              class="w-full px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            />
+          </div>
+        </div>
+        <div class="flex items-center space-x-2">
+          <label for="dynamicCursor" class="text-sm font-medium"
+            >Dynamic Cursor Location</label
+          >
+          <input
+            type="checkbox"
+            id="dynamicCursor"
+            class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+          />
+        </div>
+      </div>
+      <div class="mb-4">
+        <div class="flex space-x-4">
+          <div class="w-1/2">
+            <label for="startHotkey" class="block text-sm font-semibold mb-2"
+              >Start Hotkey</label
+            >
+            <input
+              id="startHotkey"
+              type="text"
+              placeholder="e.g. F8"
+              class="w-full px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            />
+          </div>
+          <div class="w-1/2">
+            <label for="stopHotkey" class="block text-sm font-semibold mb-2"
+              >Stop Hotkey</label
+            >
+            <input
+              id="stopHotkey"
+              type="text"
+              placeholder="e.g. F9"
+              class="w-full px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="mb-4">
+        <div class="flex space-x-4">
+          <button
+            id="record"
+            class="w-1/2 py-2 text-white bg-blue-500 hover:bg-blue-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          >
+            Record Clicks
+          </button>
+          <button
+            id="play"
+            class="w-1/2 py-2 text-white bg-green-500 hover:bg-green-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+          >
+            Play Clicks
+          </button>
+        </div>
+      </div>
+      <div>
+        <button
+          id="start"
+          class="w-full py-2 text-white bg-indigo-500 hover:bg-indigo-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          Start Autoclicker
+        </button>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
