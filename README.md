@@ -1,5 +1,12 @@
 # Mekabiz Autoclicker Chrome Extension
 
+[![CI](https://github.com/mehrshud/Mekabiz-Autoclicker/actions/workflows/ci.yml/badge.svg)](https://github.com/mehrshud/Mekabiz-Autoclicker/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![HTML](https://img.shields.io/badge/language-HTML-blue)]()
+[![Stars](https://img.shields.io/github/stars/mehrshud/Mekabiz-Autoclicker?style=social)](https://github.com/mehrshud/Mekabiz-Autoclicker)
+
+
+
 ![Mekabiz Autoclicker Logo](./icon.png)
 
 Mekabiz Autoclicker is a simple yet powerful Chrome extension designed to automate mouse clicks on websites. It provides multiple customization options, including dynamic cursor location, allowing users to set up clicks precisely where and how they want.
